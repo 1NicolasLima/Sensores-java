@@ -10,18 +10,19 @@ public class Sensores {
     public int sensorManual;
 
     // ABERTURA DA CLASSE
+
+    // GERAÇÃO AUTOMÁTICA DE TEMPERATURA
     public void sensorTemperatura() {
         int[] vet; // DECLARAÇÃO DO TIPO DE VETOR;
         Random r = new Random();// DECLARAÇÃO DO METÓDO ALEATORIO
         Date date = new Date();// DECLARAÇÃO METODO DE DATA
         int aux = 0; // VARIÁVEL QUE VAI SER USADA PARA AJUDAR NO ALGORITMO DE ORDENAÇÃO.
-        vet = new int[48];// DEFINIÇÃO DO TAMANHO DO VETOR, QUE É 16
+        vet = new int[48];// DEFINIÇÃO DO TAMANHO DO VETOR
 
         // ALGORITMO DE NUMEROS ALEATORIOS
-        // vet.legth -> vet é o nome que deu para a variável do vetor, e legth é o
-        // tamanho definido no vetor.
+
         for (int i = 0; i < vet.length; i++) {// REPETIÇÃO E LEITURA DE CADA LINHA DETERMINADA NO VETOR
-            vet[i] = r.nextInt(70);// GERAÇÃO E INCLUSAO DE UM NUMERO ALEATORIO EM CADA UMA DAS LINHAS
+            vet[i] = r.nextInt(65);// GERAÇÃO E INCLUSAO DE UM NUMERO ALEATORIO EM CADA UMA DAS LINHAS
         }
         // ALGORITMO DE ORDENAÇÃO
         for (int i = 0; i <= vet.length; i++) {// LEITURA DE LINHAS DETERMINADAS NO VETOR
@@ -36,21 +37,20 @@ public class Sensores {
         for (int j = 0; j < vet.length; j++) {// ALGORITMO PARA REPETIR AS FUNÇÕES DENTRO DO LAÇO
             date = new Date(date.getTime() + 30 * 60 * 1000); // METODO PARA CHAMAR A DATA ATUAL E IR SOMANDO MEIA HORA
                                                               // NA DATA ATUAL QUE É 30*60*1000.
-            System.out.printf("Temperatura: " + vet[j] + "°C");// CHAMANDO OS NUMÉROS JÁ ORDENADOS NO ALGORITMO DE
-                                                               // ORDENAÇÃO
-            System.out.printf(" - Data/Hora: " + date);// CHAMANDO A VARIÁVEL DATA, QUE JÁ ESTÁ SOMANDO MEIA EM MEIA
-                                                       // HORA.
+            System.out.printf("Temperatura: " + vet[j] + "°C");// CHAMANDO OS NUMÉROS JÁ ORDENADOS
+            System.out.printf(" - Data/Hora: " + date);// CHAMANDO A VARIÁVEL DATA
             System.out.println("");
         }
     }
 
+    // GERAÇÃO AUTOMÁTICA DE UMIDADE
     public void sensorUmidade() {
         int[] vet;
         Date date = new Date();
         int aux = 0;
         vet = new int[48];
         for (int i = 0; i < vet.length; i++) {
-            vet[i] = (int) (Math.random() * 53) + 17;// DEFINI O INTERVALO DE NÚMEROS QUE IRIA SER GERADOS.
+            vet[i] = (int) (Math.random() * 53) + 17;// INTERVALO DE NÚMEROS QUE IRÁ SER GERADOS.
 
         }
         for (int i = 0; i <= vet.length; i++) {
@@ -61,6 +61,8 @@ public class Sensores {
                     vet[j + 1] = aux;
                 }
         }
+
+        // IMPRESSÃO NA TELA
         for (int j = 0; j < vet.length; j++) {
             date = new Date(date.getTime() + 30 * 60 * 1000);
             System.out.printf("Umidade: " + vet[j] * 0.25 + " %%");
@@ -69,6 +71,7 @@ public class Sensores {
         }
     }
 
+    // GERAÇÃO AUTOMÁTICA DE CO2
     public void sensorCarbonico() throws InterruptedException {
         int[] vet;
         Date date = new Date();
@@ -85,6 +88,8 @@ public class Sensores {
                     vet[j + 1] = aux;
                 }
         }
+
+        // IMPRESSÃO NA TELA
         for (int j = 0; j < vet.length; j++) {
             date = new Date(date.getTime() + 30 * 60 * 1000);
             System.out.printf("GÁS CARBONICO: " + vet[j] + " CO²");
@@ -93,6 +98,7 @@ public class Sensores {
         }
     }
 
+    // IMPRESSÃO NA TELA
     public void AtivadorTemperatura() throws InterruptedException {
         System.out.println("-------------------------");
         System.out.println("INICIANDO COLETA DE DADOS AUTOMÁTICA DA TEMPERATUA...");
